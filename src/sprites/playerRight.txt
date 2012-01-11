@@ -1,0 +1,4 @@
+/home/thomp/python/thomp-rpg/build3/sprites/wolf1right-alpha.gif
+/home/thomp/python/thomp-rpg/build3/sprites/wolf2right-alpha.gif
+/home/thomp/python/thomp-rpg/build3/sprites/wolf3right-alpha.gif
+/home/thomp/python/thomp-rpg/build3/sprites/wolf4right-alpha.gif

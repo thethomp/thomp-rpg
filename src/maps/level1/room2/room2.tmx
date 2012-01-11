@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map SYSTEM "http://mapeditor.org/dtd/1.0/map.dtd">
+<map version="1.0" orientation="orthogonal" width="10" height="10" tilewidth="32" tileheight="32">
+ <tileset name="votw" firstgid="1" tilewidth="32" tileheight="32">
+  <image source="../../../../../Pictures/sprites/cotwsprites02.gif"/>
+ </tileset>
+ <tileset name="gray_floortile" firstgid="295" tilewidth="32" tileheight="32">
+  <image source="../../../../../Pictures/sprites/floortiles/plain_gray.gif"/>
+ </tileset>
+ <layer name="Layer 0" width="10" height="10">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAALNkYGDQJ4CtgFgPiNUZEfg1kM8MpWFiBjjUwTA+ddjwcFJnAcS6aJgdjW8NxAB8ewPIkAEAAA==
+  </data>
+ </layer>
+</map>

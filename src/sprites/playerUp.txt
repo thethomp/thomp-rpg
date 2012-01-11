@@ -1,4 +1,4 @@
-/home/thomp/python/thomp-rpg/build3/sprites/back1.gif
-/home/thomp/python/thomp-rpg/build3/sprites/back2.gif
-/home/thomp/python/thomp-rpg/build3/sprites/back3.gif
-/home/thomp/python/thomp-rpg/build3/sprites/back4.gif
+/home/thomp/python/thomp-rpg/src/sprites/back2.gif
+/home/thomp/python/thomp-rpg/src/sprites/back3.gif
+/home/thomp/python/thomp-rpg/src/sprites/back4.gif
+/home/thomp/python/thomp-rpg/src/sprites/back1.gif

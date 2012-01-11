@@ -18,7 +18,7 @@ BLOCK_SIZE_X = 64
 BLOCK_SIZE_Y = 64
 
 # Map object setup
-loader = MapLoader.MapLoader('/home/thomp/python/thomp-rpg/build3/maps')
+loader = MapLoader.MapLoader('/home/thomp/python/thomp-rpg/src/maps')
 screen = pygame.display.set_mode((1280,960), pygame.RESIZABLE, 32)
 level_1_map = loader.loadLevel1()
 
@@ -34,15 +34,15 @@ frame_index = 0
 image = rightSpriteSheet[frame_index]
 
 # NPC object setup
-npc = Character.Character(False, level_1_map.getActiveRoom().getRoom()[3][3], 64, 64)
+#npc = Character.Character(False, level_1_map.getActiveRoom().getRoom()[3][3], 64, 64)
 #npc.setPosition(4*64, 4*64)
-npc.loadSpriteSheets('npc1Left.txt', 'npc1Right.txt', 'npc1Down.txt', 'npc1Up.txt')
-npc_leftSpriteSheet = npc.getLeftSpriteSheet()
-npc_rightSpriteSheet = npc.getRightSpriteSheet()
-npc_downSpriteSheet = npc.getDownSpriteSheet()
-npc_upSpriteSheet = npc.getUpSpriteSheet()
-npc_frame_index = 0
-npc_image = npc_leftSpriteSheet[npc_frame_index]
+#npc.loadSpriteSheets('npc1Left.txt', 'npc1Right.txt', 'npc1Down.txt', 'npc1Up.txt')
+#npc_leftSpriteSheet = npc.getLeftSpriteSheet()
+#npc_rightSpriteSheet = npc.getRightSpriteSheet()
+#npc_downSpriteSheet = npc.getDownSpriteSheet()
+#npc_upSpriteSheet = npc.getUpSpriteSheet()
+#npc_frame_index = 0
+#npc_image = npc_leftSpriteSheet[npc_frame_index]
 
 # Interaction variables
 e_pressed = False

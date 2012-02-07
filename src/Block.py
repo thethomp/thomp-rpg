@@ -47,7 +47,7 @@ class Block:
 	def getY( self ):
 		return self.y
 
-	def addTransition( self, room, dest_x, dest_y ):
+	def addBlockTransition( self, room, dest_x, dest_y ):
 		self.hasTransition = True
 		self.dest_x = dest_x
 		self.dest_y = dest_y

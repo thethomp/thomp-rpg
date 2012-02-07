@@ -99,7 +99,7 @@ class Room:
 		
 				
 	def addTransition( self, source_x, source_y, room, dest_x, dest_y ):
-		self.room[source_x][source_y].addTransition( room, dest_x, dest_y )
+		self.room[source_x][source_y].addBlockTransition( room, dest_x, dest_y )
 		
 	def addNPC( self, npc ):
 		self.npcs.append(npc)

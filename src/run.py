@@ -126,14 +126,6 @@ def move( player, x, y, current_map, spritesheet, image ):
 	if nextBlock.isWall:
 		return
 	# check to see if player needs to be transitioned to another room
-	elif nextBlock.hasTransition:
-		player.setPosition((nextBlock.getDestinationX() + 1)*BLOCK_SIZE_X, (nextBlock.getDestinationY() +1)*BLOCK_SIZE_Y)
-		current_map.makeActive(False)
-		nextBlock.getDestinationRoom().makeActive(True)
-		updateBackground( nextBlock.getDestinationRoom() )
-		updateCharacter(player, spritesheet[0], image)
-		pygame.display.update()
-		return
 	for spriteframe in spritesheet:
 		x_add = x/len(spritesheet) 
 		y_add = y/len(spritesheet) 
@@ -142,6 +134,15 @@ def move( player, x, y, current_map, spritesheet, image ):
 		pygame.time.delay(70)
 		updateCharacter(player,spriteframe, image)
 		pygame.display.update()
+	if nextBlock.hasTransition:
+		#player.setPosition((nextBlock.getDestinationX() + 1)*BLOCK_SIZE_X, (nextBlock.getDestinationY() +1)*BLOCK_SIZE_Y)
+		player.setPosition((nextBlock.getDestinationX())*BLOCK_SIZE_X, (nextBlock.getDestinationY())*BLOCK_SIZE_Y)
+		current_map.makeActive(False)
+		nextBlock.getDestinationRoom().makeActive(True)
+		updateBackground( nextBlock.getDestinationRoom() )
+		updateCharacter(player, spritesheet[0], image)
+		pygame.display.update()
+	#	return
 	# set up block states
 	if player.isPlayer:
 		player.getCurrentBlock().setChar(False)
@@ -152,7 +153,7 @@ while True:
 
 	#event = pygame.event.wait()
 	interact_block = None
-	print 'in top of loop'
+#	print 'in top of loop'
 	for event in pygame.event.get():
 		if event.type == QUIT:
 			exit()
@@ -189,11 +190,11 @@ while True:
 	#		move( player, 0, BLOCK_SIZE_Y , current_map, downSpriteSheet, image )
 	#		move( npc, 0, BLOCK_SIZE_Y , current_map, npc_downSpriteSheet, npc_image )
 
-	print 'in mid of loop'	
+#	print 'in mid of loop'	
 	
 	# Check for interaction key press
 	if e_pressed:
-		print 'in e_pressed true'
+	#	print 'in e_pressed true'
 		event = pygame.event.wait()
 		checkForExit(event)
 		if event.type == KEYDOWN:
@@ -201,7 +202,7 @@ while True:
 				current_map = level_1_map.getActiveRoom().reloadRoomImage()
 				e_pressed = False
 	else:
-		print 'in e_pressed false'
+	#	print 'in e_pressed false'
 		event = pygame.event.wait()
 		checkForExit(event)
 		if event.type == KEYDOWN:

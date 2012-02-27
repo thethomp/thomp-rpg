@@ -31,10 +31,10 @@ class Room:
 		# create room array
 		self.room = []  # array of block objects
 		for i in xrange(self.max_x_index):
-			print 'room i:' + str(i)
+#			print 'room i:' + str(i)
 			self.room.append([])
 			for j in xrange(self.max_y_index):
-				print 'room i,j:' + str((i,j)) 
+#				print 'room i,j:' + str((i,j)) 
 				self.room[i].append(Block.Block(i,j))
 
 		self.syncCSV( self.csv_path )

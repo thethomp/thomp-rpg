@@ -23,14 +23,14 @@ class Character:
 	# leftSheet is a list of sprite image files for left movement
 	# rightSheet is a list of sprite image files for right movement
 	def loadSpriteSheets( self, left, right, down, up ):
-		leftSheet = 'sprites/' + left
-		rightSheet = 'sprites/' + right
-		downSheet = 'sprites/' + down
-		upSheet = 'sprites/' + up
-		leftSheetFile = open(leftSheet, 'r')
-		rightSheetFile = open(rightSheet, 'r')
-		downSheetFile = open(downSheet, 'r')
-		upSheetFile = open(upSheet, 'r')
+		#leftSheet = 'sprites/' + left
+		#rightSheet = 'sprites/' + right
+		#downSheet = 'sprites/' + down
+		#upSheet = 'sprites/' + up
+		leftSheetFile = open(left, 'r')
+		rightSheetFile = open(right, 'r')
+		downSheetFile = open(down, 'r')
+		upSheetFile = open(up, 'r')
 		
 		for filename in leftSheetFile:
 			image = pygame.image.load(filename.rstrip())

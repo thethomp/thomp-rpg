@@ -9,23 +9,30 @@ import Map
 import Block
 import Room
 import math
-
+import ConfigParser
 
 pygame.init()
+
+# Configuration handler instantiation
+config = ConfigParser.SafeConfigParser()
+config.read('config/defaults.cfg')
+
+MAPS_HOME =  config.get('MAPS', 'home_dir')
 
 # Constants
 BLOCK_SIZE_X = 64
 BLOCK_SIZE_Y = 64
 
 # Map object setup
-loader = MapLoader.MapLoader('/home/thomp/python/thomp-rpg/src/maps')
+loader = MapLoader.MapLoader(MAPS_HOME)
 screen = pygame.display.set_mode((1280,960), pygame.RESIZABLE, 32)
 level_1_map = loader.loadLevel1()
 
 # Character object setup
 start_block = level_1_map.getActiveRoom().getCharBlock()
 player = Character.Character(True, start_block, 64, 64)
-player.loadSpriteSheets('playerDown.txt', 'playerDown.txt', 'playerDown.txt', 'playerUp.txt')
+#player.loadSpriteSheets('playerDown.txt', 'playerDown.txt', 'playerDown.txt', 'playerUp.txt')
+player.loadSpriteSheets(config.get('PLAYER_SPRITES', 'right'), config.get('PLAYER_SPRITES', 'left'), config.get('PLAYER_SPRITES', 'down'), config.get('PLAYER_SPRITES', 'up'))
 leftSpriteSheet = player.getLeftSpriteSheet()
 rightSpriteSheet = player.getRightSpriteSheet()
 downSpriteSheet = player.getDownSpriteSheet()
@@ -94,7 +101,6 @@ def splitMessage( msg, char_limit ):
 		num2 += char_limit
 	return msg_list
 
-
 def displayMessage( msg ):
 	text_size = 30
 	close_text_size = 16
@@ -131,7 +137,7 @@ def move( player, x, y, current_map, spritesheet, image ):
 		y_add = y/len(spritesheet) 
 		player.setPosition( player.getX() + x_add, player.getY() + y_add )
 		updateBackground(current_map)
-		pygame.time.delay(70)
+		pygame.time.delay(40)
 		updateCharacter(player,spriteframe, image)
 		pygame.display.update()
 	if nextBlock.hasTransition:
@@ -163,32 +169,23 @@ while True:
 	# Left Arrow or A movement
 	if pressed_keys[K_LEFT] or pressed_keys[K_a]:
 		move( player, -BLOCK_SIZE_X, 0, current_map, leftSpriteSheet, image )
+#		move( npc, -BLOCK_SIZE_X, 0, current_map, leftSpriteSheet, image )
 	#	move( -BLOCK_SIZE_X, 0, current_map, leftSpriteSheet )
 	## Right Arrow or D movement
 	elif pressed_keys[K_RIGHT] or pressed_keys[K_d]:
 		move( player, BLOCK_SIZE_X, 0, current_map, rightSpriteSheet, image)
+#		move( npc, BLOCK_SIZE_X, 0, current_map, rightSpriteSheet, image)
 	#	move( BLOCK_SIZE_X, 0, current_map, rightSpriteSheet )
 	# Up Arrow or W movement
 	elif pressed_keys[K_UP] or pressed_keys[K_w]:
 		move( player, 0, -BLOCK_SIZE_Y , current_map, upSpriteSheet, image )
+#		move( npc, 0, -BLOCK_SIZE_Y , current_map, upSpriteSheet, image )
 	#	move( 0, -BLOCK_SIZE_Y , current_map, leftSpriteSheet )
 	# Down Arrow or S movement
 	elif pressed_keys[K_DOWN] or pressed_keys[K_s]:
 		move( player, 0, BLOCK_SIZE_Y , current_map, downSpriteSheet, image )
+#		move( npc, 0, BLOCK_SIZE_Y , current_map, downSpriteSheet, image )
 	#	move( 0, BLOCK_SIZE_Y , current_map, downSpriteSheet )
-	#if event.type == KEYDOWN and not e_pressed:
-	#	if event.key == K_LEFT:
-	#		move( player, -BLOCK_SIZE_X, 0, current_map, leftSpriteSheet, image )
-	#		move( npc, -BLOCK_SIZE_X, 0, current_map, npc_leftSpriteSheet, npc_image )
-	#	elif event.key == K_RIGHT:
-	#		move( player, BLOCK_SIZE_X, 0, current_map, rightSpriteSheet, image)
-	#		move( npc, BLOCK_SIZE_X, 0, current_map, npc_rightSpriteSheet, npc_image)
-	#	elif event.key == K_UP:
-	#		move( player, 0, -BLOCK_SIZE_Y , current_map, upSpriteSheet, image )
-	#		move( npc, 0, -BLOCK_SIZE_Y , current_map, npc_upSpriteSheet, npc_image )
-	#	elif event.key == K_DOWN:
-	#		move( player, 0, BLOCK_SIZE_Y , current_map, downSpriteSheet, image )
-	#		move( npc, 0, BLOCK_SIZE_Y , current_map, npc_downSpriteSheet, npc_image )
 
 #	print 'in mid of loop'	
 	
@@ -219,6 +216,7 @@ while True:
 		#pygame.display.update()
 		#pygame.time.delay(1000)
 
+	current_map = level_1_map.getActiveRoom().reloadRoomImage() # Load the image as the new current_map
 	updateBackground(current_map)
 	updateCharacter(player, image, image)
 #	updateCharacter(npc, npc_image, npc_image)

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-sudo apt-get install python-pygame
+sudo apt-get -y install python-setuptools
+sudo apt-get -y install python-pygame
+easy_install PyYaml
 
 tmp=/tmp/path.tmp
 dest=./src/sprites/playerUp.txt

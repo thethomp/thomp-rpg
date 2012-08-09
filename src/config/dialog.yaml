@@ -1,0 +1,28 @@
+# YAML Document for NPC/character dialog choices
+---
+key: Intro
+speaker: Interrogator
+c1: Well, look who it is. You idiots never learn do you?
+---
+key: PlayerResponse1
+speaker: Player
+c1: Say nothing.
+c2: Shhhhh, girl, shhhhh.
+c3: Go fuck yourself.
+c4: I admit it, I'm an idiot.
+---
+key: NPCResponse1
+speaker: Interrogator
+c1: Silent... like the little bitch that you are.
+c2: What sort of faggotity response is that?!
+c3: You'd bite your tongue if you knew what was good for you.
+c4: Damned right you are.
+---
+key: NPCQuestion
+speaker: Interrogator
+c1: The time has come you little bitch. What's it gonna be?
+---
+key: PlayerResponse2
+speaker: Player
+c1: Betray you partner in crime.
+c2: Stay silent; protect your partner in crime.
